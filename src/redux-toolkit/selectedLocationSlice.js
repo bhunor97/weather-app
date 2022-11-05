@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  value: "",
+  value: "Budapest",
 };
 
 export const selectedLocationSlice = createSlice({

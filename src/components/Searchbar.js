@@ -14,17 +14,16 @@ const Searchbar = () => {
     }
   };
 
-  // console.log(location);
-
   return (
-    <>
+    <section>
+      <h1 className="text-xl py-2">Weather App</h1>
       <input
-        className="text-center h-12 rounded-md shadow-md outline-none"
+        className="opacity-90 text-center h-12 rounded-md shadow-md outline-none"
         type="text"
         placeholder="Search for a location"
         onKeyDown={onChangeFunc}
       />
-    </>
+    </section>
   );
 };
 

@@ -1,19 +1,29 @@
 import React from "react";
-import { useState, useEffect } from "react";
 // COMPONENTS
 import Searchbar from "./components/Searchbar";
-import ReactQuery from "./api/ReactQuery";
+import ImageFetch from "./api/service/ImageFetch";
+import WeatherRender from "./api/view/WeatherRender";
+import WeatherFetch from "./api/service/WeatherFetch";
+import LoadingSpinner from "./components/LoadingSpinner";
+import loadingFunc from "./functions/LoadingFunc";
 // REDUX TOOLKIT
 import { useSelector } from "react-redux";
 
 const App = () => {
-  const weather = useSelector((state) => state.weather.value);
+  const fetchedImage = useSelector((state) => state.fetchedImage.value);
+  const loadingWeather = useSelector((state) => state.loadingWeather.value);
+  console.log(loadingWeather);
 
   return (
-    <section className="bg-blue-100 h-screen text-center">
-      <h1 className="text-xl pt-5">Weather App</h1>
+    <section
+      className="h-screen w-full text-center bg-cover bg-center"
+      style={{ backgroundImage: `url(${fetchedImage})` }}
+    >
       <Searchbar />
-      <ReactQuery />
+      <WeatherFetch />
+      {/* <WeatherRender /> */}
+      {loadingFunc(loadingWeather, <LoadingSpinner />, <WeatherRender />)}
+      <ImageFetch />
     </section>
   );
 };
