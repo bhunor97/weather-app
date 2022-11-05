@@ -5,11 +5,12 @@ import { useSelector } from "react-redux";
 const LoadingSpinner = () => {
   const loadingWeather = useSelector((state) => state.loadingWeather.value);
   // console.log(loadingWeather);
+
   const spinnerFunc = () => {
     return (
       <div className="w-40 mx-auto">
         <svg
-          className="animate-spin m-auto text-white opacity-80 "
+          className="animate-spin m-auto text-black opacity-70 "
           fill="none"
           height="100"
           width="100"

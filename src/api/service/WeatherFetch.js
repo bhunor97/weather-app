@@ -28,7 +28,6 @@ const WeatherFetch = () => {
         .catch((error) => {
           console.log(error.message);
         });
-      // .finally(dispatch(setLoadingWeatherOff()));
       dispatch(setWeatherData(response));
     };
     fetchWeather();

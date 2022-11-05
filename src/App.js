@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 const App = () => {
   const fetchedImage = useSelector((state) => state.fetchedImage.value);
   const loadingWeather = useSelector((state) => state.loadingWeather.value);
-  console.log(loadingWeather);
+  // console.log(loadingWeather);
 
   return (
     <section
@@ -21,9 +21,8 @@ const App = () => {
     >
       <Searchbar />
       <WeatherFetch />
-      {/* <WeatherRender /> */}
-      {loadingFunc(loadingWeather, <LoadingSpinner />, <WeatherRender />)}
       <ImageFetch />
+      {loadingFunc(loadingWeather, <LoadingSpinner />, <WeatherRender />)}
     </section>
   );
 };

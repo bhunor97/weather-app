@@ -21,27 +21,45 @@ const WeatherRender = () => {
       // weatherData.timezone
     ) {
       return (
-        <div className="text-dark bg-white w-80 m-auto rounded-xl mt-5">
-          <div>
+        <section className="grid grid-cols-3 grid-rows-3 mt-5 m-auto gap-5 h-[50rem]">
+          <div className="bg-white opacity-70">
+            Humidity: {weatherData.main.humidity}%
+          </div>
+          <div className="bg-white opacity-70">
+            Cloudiness: {weatherData.clouds.all}%
+          </div>
+          <div className="bg-white opacity-70">
             Location: {weatherData.name} {weatherData.sys.country}
           </div>
-          <div>
+          <div className="bg-white opacity-70">
+            Pressure: {weatherData.main.pressure} hPa
+          </div>
+
+          <div className="bg-white opacity-70">
             Feels like: {Math.round(weatherData.main.feels_like - 273.15)}°C
           </div>
-          <div>Humidity: {weatherData.main.humidity}%</div>
-          <div>Cloudiness: {weatherData.clouds.all}%</div>
-          <div>Pressure: {weatherData.main.pressure} hPa</div>
-          <div>Current weather: {weatherData.weather[0].description}</div>
-          <div>Wind Speed: {weatherData.wind.speed} km/h</div>
-          <div>Latitude: {weatherData.coord.lat}</div>
-          <div>Longitude: {weatherData.coord.lon}</div>
-          <div>Time: {timeZoneFunc(weatherData.timezone)}</div>
+          <div className="bg-white opacity-70">
+            Current weather: {weatherData.weather[0].description}
+          </div>
+          <div className="bg-white opacity-70">
+            Local Time: {timeZoneFunc(weatherData.timezone)}
+          </div>
           <img
             src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
             alt="weather icon"
-            className="m-auto"
+            className="bg-white opacity-70"
           />
-        </div>
+          <div className="bg-white opacity-70">
+            Latitude: {weatherData.coord.lat}
+          </div>
+          <div className="bg-white opacity-70">
+            Longitude: {weatherData.coord.lon}
+          </div>
+          <div className="bg-white opacity-70"></div>
+          <div className="bg-white opacity-70">
+            Wind Speed: {weatherData.wind.speed} km/h
+          </div>
+        </section>
       );
     }
   };
