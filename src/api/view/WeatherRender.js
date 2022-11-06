@@ -21,43 +21,43 @@ const WeatherRender = () => {
       // weatherData.timezone
     ) {
       return (
-        <section className="grid grid-cols-3 grid-rows-3 mt-5 m-auto gap-5 h-[50rem]">
-          <div className="bg-white opacity-70">
-            Humidity: {weatherData.main.humidity}%
-          </div>
-          <div className="bg-white opacity-70">
-            Cloudiness: {weatherData.clouds.all}%
-          </div>
-          <div className="bg-white opacity-70">
-            Location: {weatherData.name} {weatherData.sys.country}
-          </div>
-          <div className="bg-white opacity-70">
-            Pressure: {weatherData.main.pressure} hPa
+        <section className="grid grid-cols-3 mt-5 m-auto gap-10 min-h-[50rem] opacity-80 p-5 list-none justify-items-start text-2xl">
+          <div className="bg-gray-50 col-span-2 align-start w-full text-left">
+            <li>
+              Location: {weatherData.name} {weatherData.sys.country}
+            </li>
+            <li>Current weather: {weatherData.weather[0].description}</li>
           </div>
 
-          <div className="bg-white opacity-70">
-            Feels like: {Math.round(weatherData.main.feels_like - 273.15)}°C
+          <div className="bg-gray-50 w-full grid justify-end content-start">
+            <li>
+              Feels like: {Math.round(weatherData.main.feels_like - 273.15)}°C
+            </li>
+            <li>
+              <img
+                src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
+                alt="weather icon"
+              />
+            </li>
           </div>
-          <div className="bg-white opacity-70">
-            Current weather: {weatherData.weather[0].description}
+
+          <div className="bg-gray-50 w-full text-left grid content-between row-span-2">
+            <li>Latitude: {weatherData.coord.lat}</li>
+            <li>Longitude: {weatherData.coord.lon}</li>
+            <li>Pressure: {weatherData.main.pressure} hPa</li>
           </div>
-          <div className="bg-white opacity-70">
+
+          <div className="bg-gray-50 w-full"></div>
+          <div className="bg-gray-50 row-span-2 w-full text-right grid content-between">
+            <li>Humidity: {weatherData.main.humidity}%</li>
+            <li>Wind Speed: {weatherData.wind.speed} km/h</li>
+            <li>Cloudiness: {weatherData.clouds.all}%</li>
+          </div>
+          <div className="bg-gray-50 w-full"></div>
+          <div className="bg-gray-50 w-full"></div>
+          <div className="bg-gray-50 w-full"></div>
+          <div className="bg-gray-50 justify-self-end w-full text-right grid content-center">
             Local Time: {timeZoneFunc(weatherData.timezone)}
-          </div>
-          <img
-            src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
-            alt="weather icon"
-            className="bg-white opacity-70"
-          />
-          <div className="bg-white opacity-70">
-            Latitude: {weatherData.coord.lat}
-          </div>
-          <div className="bg-white opacity-70">
-            Longitude: {weatherData.coord.lon}
-          </div>
-          <div className="bg-white opacity-70"></div>
-          <div className="bg-white opacity-70">
-            Wind Speed: {weatherData.wind.speed} km/h
           </div>
         </section>
       );
