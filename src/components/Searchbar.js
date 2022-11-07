@@ -25,7 +25,7 @@ const Searchbar = () => {
       </div>
 
       <input
-        className="text-center h-12 rounded-md shadow-md outline-none"
+        className="text-center h-12 rounded-lg shadow-md outline-none"
         type="text"
         placeholder="Search for a location"
         onKeyDown={onChangeFunc}
