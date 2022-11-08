@@ -7,24 +7,27 @@ module.exports = {
       // poppins: "'Poppins', sans-serif",
       // sintony: "'Sintony', sans-serif",
       fontFamily: {
-        dataNameType: "'Poppins', sans-serif",
-        dataValueType: "'Sintony', sans-serif",
+        dataNameType: "'Sintony', sans-serif",
+        dataValueType: "'Poppins', sans-serif",
+        headerType: "'Poppins', sans-serif",
       },
       fontSize: {
         dataNameSize: "1.5rem",
         dataValueSize: "1.3rem",
+        titleSize: "2rem",
       },
       fontWeight: {
         dataNameWeight: "800",
-        dataValueWeight: "500",
+        dataValueWeight: "400",
       },
       padding: {
-        dataValuePaddingLeft: "2rem",
-        dataContainerPadding: "1.25rem",
+        dataValuePaddingLeft: "1rem",
+        dataContainerPadding: "1rem",
       },
       textColor: {
         dataNameColor: "black",
         dataValueColor: "black",
+        titleColor: "white",
       },
       backgroundColor: {
         dataBgColor: "white",

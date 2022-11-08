@@ -16,13 +16,16 @@ const App = () => {
 
   return (
     <section
-      className="h-screen w-full text-center bg-cover bg-center"
+      className="min-h-screen w-full text-center bg-cover bg-yellow-100 bg-center relative "
       style={{ backgroundImage: `url(${fetchedImage})` }}
     >
-      <Searchbar />
-      <WeatherFetch />
-      <ImageFetch />
-      {loadingFunc(loadingWeather, <LoadingSpinner />, <WeatherRender />)}
+      <div className="absolute inset-0 bg-gray-900 bg-opacity-70"></div>
+      <div className="absolute inset-0 flex flex-col justify-center items-center">
+        <Searchbar />
+        <WeatherFetch />
+        <ImageFetch />
+        {loadingFunc(loadingWeather, <LoadingSpinner />, <WeatherRender />)}
+      </div>
     </section>
   );
 };

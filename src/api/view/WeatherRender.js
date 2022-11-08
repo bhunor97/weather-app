@@ -2,6 +2,7 @@ import React from "react";
 // COMPONENTS
 import timeZoneFunc from "../../functions/TimezoneFunc";
 import LoadingSpinner from "../../components/LoadingSpinner";
+import Clock from "../../icons/Clock";
 // REDUX TOOLKIT
 import { useSelector } from "react-redux";
 
@@ -26,10 +27,11 @@ const WeatherRender = () => {
       // weatherData.timezone
     ) {
       return (
-        <section className="grid grid-cols-3 mt-3 m-auto gap-10 min-h-[45rem] px-28 pt-10 list-none justify-items-start">
+        <section className="grid grid-cols-3 mt-3 m-auto gap-10 min-h-[40rem] px-10 px-md-5 ">
           {/* LOCATION & WEATHER */}
-          <div className="bg-dataBgColor col-span-2 align-start w-80 h-max text-left rounded-lg p-dataContainerPadding">
-            <div className="flex flex-row items-center">
+          <div className="relative inset-0 bg-dataBgColor col-span-2 align-start w-max h-max p-dataContainerPadding">
+            <div className="absolute bg-gray-900 bg-opacity-75"></div>
+            <div className="flex flex-row items-center justify-between">
               <div className="text-dataNameSize font-dataNameWeight font-dataNameType text-dataNameColor ">
                 Location:{" "}
               </div>
@@ -38,7 +40,7 @@ const WeatherRender = () => {
               </div>
             </div>
 
-            <div className="flex flex-row items-center">
+            <div className="flex flex-row items-center justify-between">
               <div className="text-dataNameSize font-dataNameWeight font-dataNameType text-dataNameColor">
                 Current weather:{" "}
               </div>
@@ -49,14 +51,14 @@ const WeatherRender = () => {
           </div>
 
           {/* FEELS LIKE & ICON */}
-          <div className="bg-dataBgColor w-max ml-auto grid justify-end content-start text-right rounded-lg p-dataContainerPadding">
+          <div className="bg-dataBgColor h-max ml-auto grid justify-end content-start p-dataContainerPadding">
             <div className="grid text-dataNameSize font-dataNameWeight font-dataNameType text-dataNameColor">
-              Feels like
+              Feels like:
             </div>
             <div className="font-dataValueType font-dataValueWeight text-dataValueSize text-dataValueColor">
               {Math.round(weatherData.main.feels_like - 273.15)}°C
             </div>
-            <div className="flex items-center justify-end">
+            <div className="flex items-center justify-center">
               <img
                 src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
                 alt="weather icon"
@@ -66,8 +68,8 @@ const WeatherRender = () => {
           </div>
 
           {/* LATI & LONGI & PRESSURE */}
-          <div className="bg-dataBgColor w-max text-left grid content-around rounded-lg p-dataContainerPadding">
-            <div className="flex flex-row items-center">
+          <div className="bg-dataBgColor w-max text-left grid content-around p-dataContainerPadding">
+            <div className="flex flex-row items-center justify-between">
               <div className="text-dataNameSize font-dataNameWeight font-dataNameType text-dataNameColor">
                 Latitude:{" "}
               </div>
@@ -76,7 +78,7 @@ const WeatherRender = () => {
               </div>
             </div>
 
-            <div className="flex flex-row items-center">
+            <div className="flex flex-row items-center justify-between">
               <div className="text-dataNameSize font-dataNameWeight font-dataNameType text-dataNameColor">
                 Longitude:
               </div>
@@ -85,7 +87,7 @@ const WeatherRender = () => {
               </div>
             </div>
 
-            <div className="flex flex-row items-center">
+            <div className="flex flex-row items-center justify-between">
               <div className="text-dataNameSize font-dataNameWeight font-dataNameType text-dataNameColor">
                 Pressure:
               </div>
@@ -96,13 +98,13 @@ const WeatherRender = () => {
           </div>
 
           {/* FILL */}
-          <div className="bg-none w-min mx-auto"></div>
+          <div className="bg-none"></div>
 
           {/* HUMID & WIND & CLOUD */}
-          <div className="bg-dataBgColor justify-self-end w-max text-right grid content-around rounded-lg p-dataContainerPadding">
+          <div className="bg-dataBgColor justify-self-end min-w-max text-right grid content-around  p-dataContainerPadding">
             <div>
               <div className="text-dataNameSize font-dataNameWeight font-dataNameType text-dataNameColor">
-                Humidity
+                Humidity:
               </div>
               <div className="font-dataValueType font-dataValueWeight text-dataValueSize text-dataValueColor">
                 {weatherData.main.humidity}%
@@ -111,7 +113,7 @@ const WeatherRender = () => {
 
             <div>
               <div className="text-dataNameSize font-dataNameWeight font-dataNameType text-dataNameColor">
-                Wind Speed
+                Wind Speed:
               </div>
               <div className="font-dataValueType font-dataValueWeight text-dataValueSize text-dataValueColor">
                 {weatherData.wind.speed} km/h
@@ -120,7 +122,7 @@ const WeatherRender = () => {
 
             <div>
               <div className="text-dataNameSize font-dataNameWeight font-dataNameType text-dataNameColor">
-                Cloudiness
+                Cloudiness:
               </div>
               <div className="font-dataValueType font-dataValueWeight text-dataValueSize text-dataValueColor">
                 {weatherData.clouds.all}%
@@ -132,14 +134,13 @@ const WeatherRender = () => {
           <div className="bg-none w-full"></div>
 
           {/* LOCAL TIME */}
-          <div className="bg-dataBgColor w-80 h-20 m-auto text-right grid content-end justify-center rounded-lg p-2">
-            <div>
-              <div className="text-dataNameSize font-dataNameWeight font-dataNameType text-dataNameColor">
-                Local Time
-              </div>
-              <div className="text-center font-dataValueType font-dataValueWeight text-dataValueSize text-dataValueColor">
-                {timeZoneFunc(weatherData.timezone)}
-              </div>
+          <div className="w-max  bg-dataBgColor h-20 m-auto text-right grid content-end justify-center  p-2">
+            <div className="text-dataNameSize font-dataNameWeight font-dataNameType text-dataNameColor">
+              Local Time:
+            </div>
+            <div className="text-center font-dataValueType font-dataValueWeight text-dataValueSize text-dataValueColor">
+              <Clock />
+              {timeZoneFunc(weatherData.timezone)}
             </div>
           </div>
 
