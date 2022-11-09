@@ -10,7 +10,7 @@ const LoadingSpinner = () => {
     return (
       <div className="w-40 mx-auto">
         <svg
-          className="animate-spin m-auto text-black opacity-70 "
+          className="animate-spin m-auto text-white opacity-70 "
           fill="none"
           height="100"
           width="100"
@@ -26,7 +26,7 @@ const LoadingSpinner = () => {
             fill="currentColor"
           />
         </svg>
-        <span className="text-xl">Loading...</span>
+        <span className="text-xl text-white">Loading...</span>
       </div>
     );
   };

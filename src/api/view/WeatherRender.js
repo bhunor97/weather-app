@@ -3,6 +3,7 @@ import React from "react";
 import timeZoneFunc from "../../functions/TimezoneFunc";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import Clock from "../../icons/Clock";
+import CountryFlag from "../service/CountryFlag";
 // REDUX TOOLKIT
 import { useSelector } from "react-redux";
 
@@ -27,16 +28,17 @@ const WeatherRender = () => {
       // weatherData.timezone
     ) {
       return (
-        <section className="grid grid-cols-3 mt-3 m-auto gap-10 min-h-[40rem] px-10 px-md-5 ">
+        <section className="border-2 grid grid-cols-3 mt-3 gap-5">
           {/* LOCATION & WEATHER */}
-          <div className="relative inset-0 bg-dataBgColor col-span-2 align-start w-max h-max p-dataContainerPadding">
+          <div className="relative bg-dataBgColor col-span-2 align-start w-[30rem] xl:w-[45rem] h-max p-dataContainerPadding">
             <div className="absolute bg-gray-900 bg-opacity-75"></div>
             <div className="flex flex-row items-center justify-between">
               <div className="text-dataNameSize font-dataNameWeight font-dataNameType text-dataNameColor ">
                 Location:{" "}
               </div>
-              <div className="pl-dataValuePaddingLeft font-dataValueType font-dataValueWeight text-dataValueSize text-dataValueColor">
+              <div className="pl-dataValuePaddingLeft font-dataValueType font-dataValueWeight text-dataValueSize text-dataValueColor flex flex-row">
                 {weatherData.name} {weatherData.sys.country}
+                <CountryFlag />
               </div>
             </div>
 
@@ -62,7 +64,7 @@ const WeatherRender = () => {
               <img
                 src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
                 alt="weather icon"
-                className="w-16"
+                className="w-20"
               />
             </div>
           </div>
@@ -134,7 +136,7 @@ const WeatherRender = () => {
           <div className="bg-none w-full"></div>
 
           {/* LOCAL TIME */}
-          <div className="w-max  bg-dataBgColor h-20 m-auto text-right grid content-end justify-center  p-2">
+          <div className="w-max bg-dataBgColor h-max m-auto text-right grid content-end justify-center  p-2">
             <div className="text-dataNameSize font-dataNameWeight font-dataNameType text-dataNameColor">
               Local Time:
             </div>
