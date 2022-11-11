@@ -1,20 +1,25 @@
 import React from "react";
 // COMPONENTS
+import moment from "moment";
+import { useState } from "react";
 import timeZoneFunc from "../../functions/TimezoneFunc";
 import LoadingSpinner from "../../components/LoadingSpinner";
 import Clock from "../../icons/Clock";
 import CountryFlag from "../service/CountryFlag";
+import { updatedTime } from "../../functions/TimezoneFunc";
 // REDUX TOOLKIT
 import { useSelector } from "react-redux";
+// REACT SPRING
+import { useSpring, animated } from "react-spring";
+import { weatherFetchAnimation } from "../../animations/SpringAnimations";
 
 const WeatherRender = () => {
+  const [currentTime, setCurrentTime] = useState("");
   const weatherData = useSelector((state) => state.weather.value);
   const loadingWeather = useSelector((state) => state.loadingWeather.value);
+  const localTime = weatherData.timezone ? weatherData.timezone : null;
 
-  let dataNameFontType = "poppins";
-  let dataNameFontWeight = "semibold";
-  let dataNameFontSize = "3xl";
-  let dataValuePaddingLeft = "5";
+  // console.log(weatherData);
 
   const renderWeatherFunc = () => {
     if (
@@ -136,13 +141,15 @@ const WeatherRender = () => {
           <div className="bg-none w-full"></div>
 
           {/* LOCAL TIME */}
-          <div className="w-max bg-dataBgColor h-max m-auto text-right grid content-end justify-center  p-2">
+          <div className="w-max bg-dataBgColor h-max m-auto text-center grid justify-center  p-2">
             <div className="text-dataNameSize font-dataNameWeight font-dataNameType text-dataNameColor">
-              Local Time:
+              Live Local Time:
             </div>
-            <div className="text-center font-dataValueType font-dataValueWeight text-dataValueSize text-dataValueColor">
-              <Clock />
-              {timeZoneFunc(weatherData.timezone)}
+            <div className="flex flex-col align-center items-center w-max mx-auto justify-center font-dataValueType font-dataValueWeight text-dataValueSize text-dataValueColor">
+              <div className="flex flex-row justify-center">
+                <Clock />
+                {timeZoneFunc(weatherData.timezone)}
+              </div>
             </div>
           </div>
 
@@ -153,8 +160,13 @@ const WeatherRender = () => {
     }
   };
 
-  // console.log(weatherData);
-  return <section>{renderWeatherFunc()}</section>;
+  return (
+    <div>
+      <animated.div style={useSpring(weatherFetchAnimation)}>
+        {renderWeatherFunc()}
+      </animated.div>
+    </div>
+  );
 };
 
 export default WeatherRender;

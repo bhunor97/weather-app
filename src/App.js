@@ -8,6 +8,9 @@ import LoadingSpinner from "./components/LoadingSpinner";
 import loadingFunc from "./functions/LoadingFunc";
 // REDUX TOOLKIT
 import { useSelector } from "react-redux";
+// REACT SPRING
+import { useSpring, animated } from "react-spring";
+import fade from "./animations/SpringAnimations";
 
 const App = () => {
   const fetchedImage = useSelector((state) => state.fetchedImage.value);

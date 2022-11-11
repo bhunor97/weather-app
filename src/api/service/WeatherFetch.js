@@ -1,5 +1,6 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import timeZoneFunc from "../../functions/TimezoneFunc";
 // REDUX TOOLKIT
 import { useSelector, useDispatch } from "react-redux";
 import { setWeatherData } from "../../redux-toolkit/weatherDataSlice";
@@ -7,10 +8,12 @@ import {
   setLoadingWeatherOn,
   setLoadingWeatherOff,
 } from "../../redux-toolkit/loadingWeatherSlice";
+import { setErrorMessage } from "../../redux-toolkit/errorSlice";
 
 const WeatherFetch = () => {
   const location = useSelector((state) => state.location.value);
   const weatherData = useSelector((state) => state.weather.value);
+  const error = useSelector((state) => state.error.value);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,14 +29,22 @@ const WeatherFetch = () => {
           return data.json();
         })
         .catch((error) => {
+          // dispatch(setErrorMessage(error.message));
           console.log(error.message);
         });
       dispatch(setWeatherData(response));
     };
-    fetchWeather();
+
+    // CALL EVERY 60 SEC
+    const id = setInterval(() => {
+      fetchWeather(); // <-- (3) invoke in interval callback
+    }, 60000);
+
+    fetchWeather(); // <-- (2) invoke on mount
+
+    return () => clearInterval(id);
   }, [location]);
 
-  // console.log(weatherData);
   return <></>;
 };
 

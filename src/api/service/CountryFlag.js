@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const CountryFlag = () => {
   const weatherData = useSelector((state) => state.weather.value);
-  console.log(weatherData.sys.country);
+  // console.log(weatherData.sys.country);
 
   const flagFunc = () => {
     if (weatherData.sys.country) {

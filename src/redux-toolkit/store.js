@@ -3,6 +3,7 @@ import weatherDataSlice from "./weatherDataSlice";
 import selectedLocationSlice from "./selectedLocationSlice";
 import fetchImageSlice from "./fetchImageSlice";
 import loadingWeatherSlice from "./loadingWeatherSlice";
+import errorSlice from "./errorSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     location: selectedLocationSlice,
     fetchedImage: fetchImageSlice,
     loadingWeather: loadingWeatherSlice,
+    error: errorSlice,
   },
 });
