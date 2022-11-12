@@ -8,7 +8,10 @@ import {
   setLoadingWeatherOn,
   setLoadingWeatherOff,
 } from "../../redux-toolkit/loadingWeatherSlice";
-import { setErrorMessage } from "../../redux-toolkit/errorSlice";
+import {
+  setErrorMessage,
+  clearErrorMessage,
+} from "../../redux-toolkit/errorSlice";
 
 const WeatherFetch = () => {
   const location = useSelector((state) => state.location.value);
@@ -25,25 +28,33 @@ const WeatherFetch = () => {
         `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_key}`
       )
         .then((data) => {
-          dispatch(setLoadingWeatherOff());
-          return data.json();
+          if (!data.ok) {
+            dispatch(setLoadingWeatherOff());
+            dispatch(setErrorMessage([data.status, data.statusText]));
+            return data.json();
+          } else if (data.ok) {
+            dispatch(clearErrorMessage());
+            dispatch(setLoadingWeatherOff());
+            return data.json();
+          }
         })
         .catch((error) => {
-          // dispatch(setErrorMessage(error.message));
           console.log(error.message);
         });
       dispatch(setWeatherData(response));
     };
 
     // CALL EVERY 60 SEC
-    const id = setInterval(() => {
-      fetchWeather(); // <-- (3) invoke in interval callback
-    }, 60000);
+    // const id = setInterval(() => {
+    //   fetchWeather(); // <-- invoke in interval callback
+    // }, 60000);
 
-    fetchWeather(); // <-- (2) invoke on mount
+    fetchWeather(); // <-- invoke on mount
 
-    return () => clearInterval(id);
+    // return () => clearInterval(id);
   }, [location]);
+
+  // console.log(error);
 
   return <></>;
 };

@@ -6,6 +6,7 @@ import WeatherRender from "./api/view/WeatherRender";
 import WeatherFetch from "./api/service/WeatherFetch";
 import LoadingSpinner from "./components/LoadingSpinner";
 import loadingFunc from "./functions/LoadingFunc";
+import Error from "./components/Error";
 // REDUX TOOLKIT
 import { useSelector } from "react-redux";
 // REACT SPRING
@@ -15,7 +16,8 @@ import fade from "./animations/SpringAnimations";
 const App = () => {
   const fetchedImage = useSelector((state) => state.fetchedImage.value);
   const loadingWeather = useSelector((state) => state.loadingWeather.value);
-  // console.log(loadingWeather);
+  const error = useSelector((state) => state.error.value);
+  console.log(error);
 
   return (
     <section
@@ -28,6 +30,7 @@ const App = () => {
         <WeatherFetch />
         <ImageFetch />
         {loadingFunc(loadingWeather, <LoadingSpinner />, <WeatherRender />)}
+        <Error />
       </div>
     </section>
   );
