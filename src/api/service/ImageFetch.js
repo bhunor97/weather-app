@@ -18,14 +18,12 @@ const ImageFetch = () => {
 
   useEffect(() => {
     const accessKey = "my3VYAXuf7lZyJGfpvlDokQtp2jNwJ-I5xm7H2AX7fI";
-    // dispatch(setLoadingWeatherOn());
 
     const fetchImage = async () => {
       const response = await fetch(
         `https://api.unsplash.com/search/photos?page=1&query=${location}&client_id=${accessKey}`
       )
         .then((data) => {
-          // dispatch(setLoadingWeatherOff());
           return data.json();
         })
         .catch((error) => console.log(error.message));
@@ -38,8 +36,6 @@ const ImageFetch = () => {
     };
     fetchImage();
   }, [location]);
-
-  // console.log(loadingWeather);
 
   return <></>;
 };

@@ -11,13 +11,13 @@ import Error from "./components/Error";
 import { useSelector } from "react-redux";
 // REACT SPRING
 import { useSpring, animated } from "react-spring";
-import fade from "./animations/SpringAnimations";
+import { weatherFetchAnimation } from "./animations/SpringAnimations";
 
 const App = () => {
   const fetchedImage = useSelector((state) => state.fetchedImage.value);
   const loadingWeather = useSelector((state) => state.loadingWeather.value);
   const error = useSelector((state) => state.error.value);
-  console.log(error);
+  const myStyle = useSpring(weatherFetchAnimation);
 
   return (
     <section

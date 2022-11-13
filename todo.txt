@@ -1,5 +1,2 @@
-- bg overlay
 - grid layout
-- font sizes
-- C <-> F toggle
-- error display
+- local storage

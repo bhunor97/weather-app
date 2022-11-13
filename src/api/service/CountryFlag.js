@@ -10,7 +10,7 @@ const CountryFlag = () => {
     if (weatherData.sys.country) {
       return (
         <img
-          className="pl-2"
+          className="pr-3"
           src={`https://www.countryflagicons.com/FLAT/32/${weatherData.sys.country}.png`}
           alt="country flag"
         />

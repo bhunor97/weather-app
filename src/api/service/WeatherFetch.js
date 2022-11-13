@@ -54,8 +54,6 @@ const WeatherFetch = () => {
     // return () => clearInterval(id);
   }, [location]);
 
-  // console.log(error);
-
   return <></>;
 };
 

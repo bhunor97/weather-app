@@ -3,23 +3,31 @@ import React from "react";
 import moment from "moment";
 import { useState } from "react";
 import timeZoneFunc from "../../functions/TimezoneFunc";
-import LoadingSpinner from "../../components/LoadingSpinner";
 import Clock from "../../icons/Clock";
 import CountryFlag from "../service/CountryFlag";
-import { updatedTime } from "../../functions/TimezoneFunc";
+import {
+  temperatureFunc,
+  temperatureDisplayFunc,
+} from "../../functions/TemperatureFunc";
+
 // REDUX TOOLKIT
 import { useSelector } from "react-redux";
 // REACT SPRING
 import { useSpring, animated } from "react-spring";
 import { weatherFetchAnimation } from "../../animations/SpringAnimations";
+import { current } from "@reduxjs/toolkit";
 
 const WeatherRender = () => {
-  const [currentTime, setCurrentTime] = useState("");
+  const [currentTemperature, setCurrentTemperature] = useState("Celsius");
   const weatherData = useSelector((state) => state.weather.value);
   const loadingWeather = useSelector((state) => state.loadingWeather.value);
-  const localTime = weatherData.timezone ? weatherData.timezone : null;
 
-  // console.log(weatherData);
+  // const celsius = weatherData.main.feels_like
+  //   ? `${Math.round(weatherData.main.feels_like - 273.15)} °C`
+  //   : null;
+  // const fahrenheit = weatherData.main.feels_like
+  //   ? `${Math.round(weatherData.main.feels_like - 457.87)} °F`
+  //   : null;
 
   const renderWeatherFunc = () => {
     if (
@@ -27,6 +35,7 @@ const WeatherRender = () => {
       weatherData.sys.country &&
       weatherData.main.humidity &&
       weatherData.main.pressure &&
+      weatherData.main.feels_like &&
       weatherData.weather[0].description &&
       weatherData.weather[0].icon &&
       weatherData.wind.speed
@@ -38,20 +47,26 @@ const WeatherRender = () => {
           <div className="relative bg-dataBgColor col-span-2 align-start w-[30rem] xl:w-[45rem] h-max p-dataContainerPadding">
             <div className="absolute bg-gray-900 bg-opacity-75"></div>
             <div className="flex flex-row items-center justify-between">
-              <div className="text-dataNameSize font-dataNameWeight font-dataNameType text-dataNameColor ">
+              <div className="text-start text-dataNameSize font-dataNameWeight font-dataNameType text-dataNameColor ">
                 Location:{" "}
               </div>
               <div className="pl-dataValuePaddingLeft font-dataValueType font-dataValueWeight text-dataValueSize text-dataValueColor flex flex-row">
-                {weatherData.name} {weatherData.sys.country}
                 <CountryFlag />
+                <a
+                  href={`https://en.wikipedia.org/wiki/${weatherData.name}`}
+                  target="_blank"
+                  className="transition-color duration-200 hover:bg-gray-600 py-1 px-2 rounded-md bg-gray-800"
+                >
+                  {weatherData.name} {weatherData.sys.country}
+                </a>
               </div>
             </div>
 
-            <div className="flex flex-row items-center justify-between">
-              <div className="text-dataNameSize font-dataNameWeight font-dataNameType text-dataNameColor">
+            <div className="flex flex-row justify-between">
+              <div className="text-start text-dataNameSize font-dataNameWeight font-dataNameType text-dataNameColor">
                 Current weather:{" "}
               </div>
-              <div className="pl-dataValuePaddingLeft font-dataValueType font-dataValueWeight text-dataValueSize text-dataValueColor">
+              <div className="text-right pl-dataValuePaddingLeft font-dataValueType font-dataValueWeight text-dataValueSize text-dataValueColor">
                 {weatherData.weather[0].description}
               </div>
             </div>
@@ -63,7 +78,18 @@ const WeatherRender = () => {
               Feels like:
             </div>
             <div className="font-dataValueType font-dataValueWeight text-dataValueSize text-dataValueColor">
-              {Math.round(weatherData.main.feels_like - 273.15)}°C
+              {/* {Math.round(weatherData.main.feels_like - 273.15)}°C
+              {Math.round(weatherData.main.feels_like - 457.87)}°F */}
+              <button
+                onClick={() =>
+                  temperatureFunc(currentTemperature, setCurrentTemperature)
+                }
+                className="transition-color duration-200 hover:bg-gray-600 py-1 px-2 rounded-md bg-gray-800"
+              >
+                {currentTemperature === "Celsius"
+                  ? `${Math.round(weatherData.main.feels_like - 273.15)} °C`
+                  : `${Math.round(weatherData.main.feels_like - 457.87)} °F`}
+              </button>
             </div>
             <div className="flex items-center justify-center">
               <img
