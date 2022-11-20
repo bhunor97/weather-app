@@ -35,15 +35,17 @@ const WeatherRender = () => {
       // weatherData.timezone
     ) {
       return (
-        <section className="border-2  border-customBorderColor grid grid-cols-2 md:grid-cols-3 mt-3 gap-5">
+        <section className="border-2 h-[45rem] md:h-auto border-customBorderColor grid grid-cols-2 md:grid-cols-3 mt-3 gap-0 md:gap-5">
           {/* LOCATION & WEATHER */}
           <div className="border-[1px] relative bg-dataBgColor md:col-span-2 md:align-start w-max h-max p-small_dataContainerPadding">
-            <div className="border-[1px] flex flex-row items-center justify-between">
+            <div className="border-[1px] flex flex-col md:flex-row items-start justify-between">
               <div className=" border-[1px] text-start text-small_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor ">
                 Location:{" "}
               </div>
-              <div className="border-[1px] pl-small_dataValuePaddingLeft font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor flex flex-row">
+              <div className="hidden border-[1px] md:flex items-center justify-center m-auto">
                 <CountryFlag />
+              </div>
+              <div className="border-[1px] md:pl-small_dataValuePaddingLeft font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor flex flex-row">
                 <a
                   href={`https://en.wikipedia.org/wiki/${weatherData.name}`}
                   target="_blank"
@@ -51,14 +53,17 @@ const WeatherRender = () => {
                 >
                   {weatherData.name} {weatherData.sys.country}
                 </a>
+                <div className="content-center md:hidden">
+                  <CountryFlag />
+                </div>
               </div>
             </div>
 
-            <div className="border-[1px] flex flex-row justify-between">
+            <div className="border-[1px] flex flex-col md:flex-row justify-between">
               <div className="border-[1px] text-start text-small_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
                 Current weather:{" "}
               </div>
-              <div className="border-[1px] text-right pl-small_dataValuePaddingLeft font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
+              <div className="border-[1px] text-left md:text-right md:pl-small_dataValuePaddingLeft font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
                 {weatherData.weather[0].description}
               </div>
             </div>
