@@ -25,7 +25,7 @@ const Searchbar = () => {
       className="flex flex-col items-center mb-10"
     >
       <div className="flex flex-row items-center justify-around w-max ">
-        <h1 className="text-titleSize text-titleColor font-headerType font-titleWeight">
+        <h1 className="text-small_titleSize lg:text-titleSize text-titleColor font-headerType font-titleWeight">
           Weather App
         </h1>
         <HeaderIcon />
