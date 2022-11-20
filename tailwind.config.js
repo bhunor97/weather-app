@@ -12,18 +12,21 @@ module.exports = {
         headerType: "'Poppins', sans-serif",
       },
       fontSize: {
-        dataNameSize: "2rem",
-        dataValueSize: "2rem",
+        // 2rem
+        dataNameSize: "1.5rem",
+        dataValueSize: "1.5rem",
         titleSize: "2rem",
       },
       fontWeight: {
+        // 300, 600, 400
         dataNameWeight: "300",
         dataValueWeight: "600",
         titleWeight: "400",
       },
       padding: {
-        dataValuePaddingLeft: "2rem",
-        dataContainerPadding: "1rem",
+        // 2rem, 1rem
+        dataValuePaddingLeft: "1rem",
+        dataContainerPadding: "0.5rem",
       },
       textColor: {
         dataNameColor: "white",
@@ -32,6 +35,9 @@ module.exports = {
       },
       backgroundColor: {
         dataBgColor: "none",
+      },
+      borderColor: {
+        customBorderColor: "white",
       },
     },
   },
