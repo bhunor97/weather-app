@@ -25,7 +25,7 @@ const App = () => {
       style={{ backgroundImage: `url(${fetchedImage})` }}
     >
       <div className="absolute inset-0 bg-gray-900 bg-opacity-70"></div>
-      <div className="mt-5 absolute inset-0 flex flex-col justify-center items-between w-100 px-10 md:px-20 min-h-max">
+      <div className="mt-5 absolute inset-0 flex flex-col justify-center items-between w-100 px-5 md:px-20 min-h-max">
         <Searchbar />
         <WeatherFetch />
         <ImageFetch />

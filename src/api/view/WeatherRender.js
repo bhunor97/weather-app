@@ -35,17 +35,18 @@ const WeatherRender = () => {
       // weatherData.timezone
     ) {
       return (
-        <section className="border-2 h-[45rem] md:h-auto border-customBorderColor grid grid-cols-2 md:grid-cols-3 mt-3 gap-0 md:gap-5">
+        <section className="border-2 h-[45rem] md:h-[40rem] lg:h-[auto] border-customBorderColor grid grid-cols-2 md:grid-cols-3 md:mt-3 gap-0 md:gap-5">
           {/* LOCATION & WEATHER */}
-          <div className="border-[1px] relative bg-dataBgColor md:col-span-2 md:align-start w-max h-max p-small_dataContainerPadding">
-            <div className="border-[1px] flex flex-col md:flex-row items-start justify-between">
+          <div className="border-[1px] h-[15rem] md:h-auto flex flex-col md:block justify-around relative bg-dataBgColor md:col-span-2 md:align-start w-max  p-small_dataContainerPadding md:p-dataContainerPadding">
+            <div className="border-[1px]  md:w-[25rem] lg:w-[35rem] flex flex-col  md:flex-row items-start justify-between">
               <div className=" border-[1px] text-start text-small_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor ">
                 Location:{" "}
               </div>
-              <div className="hidden border-[1px] md:flex items-center justify-center m-auto">
-                <CountryFlag />
-              </div>
-              <div className="border-[1px] md:pl-small_dataValuePaddingLeft font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor flex flex-row">
+
+              <div className="border-[1px] flex flex-col sm:flex-row md:pl-small_dataValuePaddingLeft font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor ">
+                <div className="hidden border-[1px] md:flex items-center justify-center m-auto">
+                  <CountryFlag />
+                </div>
                 <a
                   href={`https://en.wikipedia.org/wiki/${weatherData.name}`}
                   target="_blank"
@@ -70,7 +71,7 @@ const WeatherRender = () => {
           </div>
 
           {/* FEELS LIKE & ICON */}
-          <div className="border-[1px] bg-dataBgColor h-max ml-auto grid justify-end content-start p-small_dataContainerPadding">
+          <div className="border-[1px] bg-dataBgColor h-max ml-auto grid justify-end content-start p-small_dataContainerPadding md:p-dataContainerPadding">
             <div className="border-[1px] grid text-small_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
               Feels like:
             </div>
@@ -90,13 +91,13 @@ const WeatherRender = () => {
               <img
                 src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
                 alt="weather icon"
-                className="border-[1px] w-20"
+                className="border-[1px] w-15 md:w-20"
               />
             </div>
           </div>
 
           {/* LATI & LONGI & PRESSURE */}
-          <div className="border-[1px] bg-dataBgColor w-max text-left grid content-around p-small_dataContainerPadding">
+          <div className="border-[1px] bg-dataBgColor w-max text-left grid content-around p-small_dataContainerPadding md:p-dataContainerPadding">
             <div className="border-[1px] flex flex-row items-center justify-between">
               <div className="border-[1px] text-small_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
                 Latitude:{" "}
@@ -129,7 +130,7 @@ const WeatherRender = () => {
           <div className="border-[1px] bg-none hidden md:flex"></div>
 
           {/* HUMID & WIND & CLOUD */}
-          <div className="border-[1px] bg-dataBgColor justify-self-end min-w-max text-right grid content-around  p-small_dataContainerPadding">
+          <div className="border-[1px] bg-dataBgColor justify-self-end min-w-max text-right grid content-around  p-small_dataContainerPadding md:p-dataContainerPadding">
             <div>
               <div className="border-[1px] text-small_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
                 Humidity:

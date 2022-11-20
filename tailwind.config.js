@@ -31,10 +31,10 @@ module.exports = {
       },
       padding: {
         small_dataValuePaddingLeft: "1rem",
-        small_dataContainerPadding: "1rem",
+        small_dataContainerPadding: "0.5rem",
 
         dataValuePaddingLeft: "2rem",
-        dataContainerPadding: "2rem",
+        dataContainerPadding: "1rem",
       },
       textColor: {
         dataNameColor: "white",
