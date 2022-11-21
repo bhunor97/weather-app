@@ -16,8 +16,12 @@ module.exports = {
         small_dataValueSize: "1.2rem",
         small_titleSize: "1.5rem",
 
-        dataNameSize: "1.8rem",
-        dataValueSize: "1.8rem",
+        medium_dataNameSize: "1.8rem",
+        medium_dataValueSize: "1.8rem",
+        medium_titleSize: "2rem",
+
+        dataNameSize: "2rem",
+        dataValueSize: "2rem",
         titleSize: "2rem",
       },
       fontWeight: {

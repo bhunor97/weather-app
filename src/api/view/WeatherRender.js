@@ -37,20 +37,20 @@ const WeatherRender = () => {
       return (
         <section className="border-2 h-[45rem] md:h-[40rem] lg:h-[auto] border-customBorderColor grid grid-cols-2 md:grid-cols-3 md:mt-3 gap-0 md:gap-5">
           {/* LOCATION & WEATHER */}
-          <div className="border-[1px] h-[15rem] md:h-auto flex flex-col md:block justify-around relative bg-dataBgColor md:col-span-2 md:align-start w-max  p-small_dataContainerPadding md:p-dataContainerPadding">
-            <div className="border-[1px]  md:w-[25rem] lg:w-[35rem] flex flex-col  md:flex-row items-start justify-between">
-              <div className=" border-[1px] text-start text-small_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor ">
-                Location:{" "}
+          <div className="h-[15rem] md:h-auto flex flex-col md:block md:justify-around relative bg-dataBgColor md:col-span-2 md:align-start w-max p-small_dataContainerPadding md:p-dataContainerPadding">
+            <div className="md:w-[25rem] lg:w-[35rem] flex flex-col md:flex-row items-start justify-between">
+              <div className="text-start text-small_dataNameSize md:text-medium_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
+                Location:
               </div>
 
-              <div className="border-[1px] flex flex-col sm:flex-row md:pl-small_dataValuePaddingLeft font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor ">
-                <div className="hidden border-[1px] md:flex items-center justify-center m-auto">
+              <div className="flex flex-col sm:flex-row md:pl-small_dataValuePaddingLeft font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor ">
+                <div className="hidden  md:flex items-center justify-center m-auto">
                   <CountryFlag />
                 </div>
                 <a
                   href={`https://en.wikipedia.org/wiki/${weatherData.name}`}
                   target="_blank"
-                  className="border-[1px] border-2 border-customBorderColor transition-color duration-200 hover:bg-gray-600 py-1 px-2 rounded-md bg-gray-800"
+                  className="border-2 border-customBorderColor transition-color duration-200 hover:bg-gray-600 py-1 px-2 rounded-md bg-gray-800"
                 >
                   {weatherData.name} {weatherData.sys.country}
                 </a>
@@ -60,115 +60,115 @@ const WeatherRender = () => {
               </div>
             </div>
 
-            <div className="border-[1px] flex flex-col md:flex-row justify-between">
-              <div className="border-[1px] text-start text-small_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
+            <div className="flex flex-col md:flex-row justify-between">
+              <div className="text-start text-small_dataNameSize md:text-medium_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
                 Current weather:{" "}
               </div>
-              <div className="border-[1px] text-left md:text-right md:pl-small_dataValuePaddingLeft font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
+              <div className="text-left md:flex flex-col items-center justify-center md:text-right md:pl-small_dataValuePaddingLeft font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
                 {weatherData.weather[0].description}
               </div>
             </div>
           </div>
 
           {/* FEELS LIKE & ICON */}
-          <div className="border-[1px] bg-dataBgColor h-max ml-auto grid justify-end content-start p-small_dataContainerPadding md:p-dataContainerPadding">
-            <div className="border-[1px] grid text-small_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
+          <div className="bg-dataBgColor h-max ml-auto grid justify-end content-start p-small_dataContainerPadding md:p-dataContainerPadding">
+            <div className="grid text-small_dataNameSize md:text-medium_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
               Feels like:
             </div>
-            <div className="border-[1px] font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
+            <div className="font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
               <button
                 onClick={() =>
                   temperatureFunc(currentTemperature, setCurrentTemperature)
                 }
-                className="border-[1px] border-2 border-customBorderColor transition-color duration-200 hover:bg-gray-600 py-1 px-2 rounded-md bg-gray-800"
+                className="border-2 border-customBorderColor transition-color duration-200 hover:bg-gray-600 py-1 px-2 rounded-md bg-gray-800"
               >
                 {currentTemperature === "Celsius"
                   ? `${Math.round(weatherData.main.feels_like - 273.15)} °C`
                   : `${Math.round(weatherData.main.feels_like - 457.87)} °F`}
               </button>
             </div>
-            <div className="border-[1px] flex items-center justify-center">
+            <div className="flex items-center justify-center">
               <img
                 src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
                 alt="weather icon"
-                className="border-[1px] w-15 md:w-20"
+                className="w-15 md:w-20"
               />
             </div>
           </div>
 
           {/* LATI & LONGI & PRESSURE */}
-          <div className="border-[1px] bg-dataBgColor w-max text-left grid content-around p-small_dataContainerPadding md:p-dataContainerPadding">
-            <div className="border-[1px] flex flex-row items-center justify-between">
-              <div className="border-[1px] text-small_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
-                Latitude:{" "}
+          <div className="bg-dataBgColor w-max text-left grid content-around p-small_dataContainerPadding md:p-dataContainerPadding">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between">
+              <div className="text-small_dataNameSize md:text-medium_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
+                Latitude:{""}
               </div>
-              <div className="border-[1px] pl-small_dataValuePaddingLeft font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
+              <div className="sm:pl-small_dataValuePaddingLeft font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
                 {weatherData.coord.lat}
               </div>
             </div>
 
-            <div className="border-[1px] flex flex-row items-center justify-between">
-              <div className="border-[1px] text-small_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between">
+              <div className="text-small_dataNameSize md:text-medium_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
                 Longitude:
               </div>
-              <div className="border-[1px] pl-small_dataValuePaddingLeft font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
+              <div className="sm:pl-small_dataValuePaddingLeft font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
                 {weatherData.coord.lon}
               </div>
             </div>
 
-            <div className="border-[1px] flex flex-row items-center justify-between">
-              <div className="border-[1px] text-small_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between">
+              <div className="text-small_dataNameSize md:text-medium_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
                 Pressure:
               </div>
-              <div className="border-[1px] pl-small_dataValuePaddingLeft font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
+              <div className="sm:pl-small_dataValuePaddingLeft font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
                 {weatherData.main.pressure} hPa
               </div>
             </div>
           </div>
 
           {/* FILL */}
-          <div className="border-[1px] bg-none hidden md:flex"></div>
+          <div className="bg-none hidden md:flex"></div>
 
           {/* HUMID & WIND & CLOUD */}
-          <div className="border-[1px] bg-dataBgColor justify-self-end min-w-max text-right grid content-around  p-small_dataContainerPadding md:p-dataContainerPadding">
+          <div className="bg-dataBgColor justify-self-end min-w-max text-right grid content-around  p-small_dataContainerPadding md:p-dataContainerPadding">
             <div>
-              <div className="border-[1px] text-small_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
+              <div className="text-small_dataNameSize md:text-medium_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
                 Humidity:
               </div>
-              <div className="border-[1px] font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
+              <div className="font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
                 {weatherData.main.humidity}%
               </div>
             </div>
 
             <div>
-              <div className="border-[1px] text-small_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
+              <div className=" text-small_dataNameSize md:text-medium_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
                 Wind Speed:
               </div>
-              <div className="border-[1px] font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
+              <div className=" font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
                 {weatherData.wind.speed} km/h
               </div>
             </div>
 
             <div>
-              <div className="border-[1px] text-small_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
+              <div className=" text-small_dataNameSize md:text-medium_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
                 Cloudiness:
               </div>
-              <div className="border-[1px] font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
+              <div className=" font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
                 {weatherData.clouds.all}%
               </div>
             </div>
           </div>
 
           {/* FILL */}
-          <div className="border-[1px] bg-none w-full hidden md:flex"></div>
+          <div className=" bg-none w-full hidden md:flex"></div>
 
           {/* LOCAL TIME */}
-          <div className="border-[1px] w-max bg-dataBgColor h-max m-auto text-center flex-col self-center items-center p-2">
-            <div className="border-[1px] text-small_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
+          <div className=" w-[100%] col-span-2 md:col-span-1 bg-dataBgColor h-max m-auto text-center flex-col justify-ceneter align-center items-center md:p-2">
+            <div className=" text-small_dataNameSize md:text-medium_dataNameSize lg:text-dataNameSize font-small_dataNameWeight font-dataNameType text-dataNameColor">
               Live Local Time:
             </div>
-            <div className="border-[1px] flex flex-col align-center items-center w-max mx-auto justify-center font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
-              <div className="border-[1px] flex flex-row justify-center">
+            <div className=" flex flex-col align-center items-center w-max mx-auto justify-center font-dataValueType font-small_dataValueWeight text-small_dataValueSize lg:text-dataValueSize text-dataValueColor">
+              <div className=" flex flex-row justify-center">
                 <Clock />
                 {timeZoneFunc(weatherData.timezone)}
               </div>
@@ -176,7 +176,7 @@ const WeatherRender = () => {
           </div>
 
           {/* FILL */}
-          <div className="bg-none w-full hidden md:flex"></div>
+          <div className=" bg-none w-full hidden md:flex"></div>
         </section>
       );
     }

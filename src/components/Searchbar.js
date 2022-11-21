@@ -22,7 +22,7 @@ const Searchbar = () => {
   return (
     <animated.section
       style={useSpring(headerAnimation)}
-      className="flex flex-col items-center mb-10"
+      className="flex flex-col items-center mb-7 md:mb-10"
     >
       <div className="flex flex-row items-center justify-around w-max ">
         <h1 className="text-small_titleSize lg:text-titleSize text-titleColor font-headerType font-titleWeight">
