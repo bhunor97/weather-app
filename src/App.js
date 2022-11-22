@@ -20,17 +20,19 @@ const App = () => {
   const myStyle = useSpring(weatherFetchAnimation);
 
   return (
-    <section
-      className="min-h-screen w-full text-center bg-cover bg-yellow-100 bg-center relative "
-      style={{ backgroundImage: `url(${fetchedImage})` }}
-    >
-      <div className="absolute inset-0 bg-gray-900 bg-opacity-70"></div>
-      <div className="mt-5 absolute inset-0 flex flex-col justify-center items-between w-100 px-5 md:px-20 min-h-max">
-        <Searchbar />
-        <WeatherFetch />
-        <ImageFetch />
-        {loadingFunc(loadingWeather, <LoadingSpinner />, <WeatherRender />)}
-        <Error />
+    <section className="animate-gradient-xy min-h-screen w-full text-center bg-cover bg-gradient-to-br from-sky-800 via-blue-400 to-white bg-center">
+      <div
+        className="min-h-screen w-full text-center bg-cover bg-center relative"
+        style={{ backgroundImage: `url(${fetchedImage})` }}
+      >
+        <div className="absolute inset-0 bg-gray-900 bg-opacity-70"></div>
+        <div className="mt-5 absolute inset-0 flex flex-col justify-center items-between w-100 px-5 md:px-20 min-h-max">
+          <Searchbar />
+          <WeatherFetch />
+          <ImageFetch />
+          {loadingFunc(loadingWeather, <LoadingSpinner />, <WeatherRender />)}
+          <Error />
+        </div>
       </div>
     </section>
   );
