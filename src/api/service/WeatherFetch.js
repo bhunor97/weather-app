@@ -45,13 +45,13 @@ const WeatherFetch = () => {
     };
 
     // CALL EVERY 60 SEC
-    // const id = setInterval(() => {
-    //   fetchWeather(); // <-- invoke in interval callback
-    // }, 60000);
+    const id = setInterval(() => {
+      fetchWeather(); // <-- invoke in interval callback
+    }, 60000);
 
     fetchWeather(); // <-- invoke on mount
 
-    // return () => clearInterval(id);
+    return () => clearInterval(id);
   }, [location]);
 
   return <></>;
